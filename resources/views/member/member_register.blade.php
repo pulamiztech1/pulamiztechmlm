@@ -69,7 +69,7 @@
           @endif
           <form method="post" action="#">@csrf
             <h3 class="nomargin">Sign Up</h3>
-            <p class="mt5 mb20">Already a member? <a href="#"><strong>Sign In</strong></a></p>
+            <p class="mt5 mb20">Already a member? <a href="{{route('memberLogin')}}"><strong>Sign In</strong></a></p>
             <input type="hidden" name="parent_id" id="parent_id">
             <input type="hidden" name="sponser_id" id="sponser_id">
             <div class="mb10">
