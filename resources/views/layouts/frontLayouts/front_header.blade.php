@@ -46,7 +46,7 @@
 			<div class="row">
 				<div class="col-md-4 col-sm-4">
 					<div class="logo">
-						<h1><a href="index.html"><i class="fa fa-bookmark-o"></i> Magic Market</a></h1>
+						<h1><a href="/"><i class="fa fa-bookmark-o"></i> Magic Market</a></h1>
 					</div>
 				</div>
 				<div class="col-md-6 col-md-offset-2 col-sm-5 col-sm-offset-3 hidden-xs">
