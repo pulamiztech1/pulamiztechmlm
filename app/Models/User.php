@@ -18,9 +18,20 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
+        'fullname',
+        'referalID',
+        'phone_no',
+        'profileImage',
+        'membershipDate',
+        'state',
+        'city',
+        'zipcode',
+        'address',
+        'credit_card_id',
+        'status'
     ];
 
     /**
@@ -41,4 +52,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function referal_code(){
+        return $this->hasOne(ReferalCode::class,'user_id');
+    }
+    public function matrix(){
+        return $this->hasOne(Matrix::class,'user_id');
+    }
+    public function supports(){
+        return $this->hasMany(Support::class,'user_id');
+    }
+    public function wallet(){
+        return $this->hasOne(Wallet::class,'user_id');
+    }
+    public function transaction_histories(){
+        return $this->hasMany(TransactionHistory::class,'user_id');
+    }
+    public function orders(){
+        return $this->hasMany(Order::class,'user_id');
+    }
 }
