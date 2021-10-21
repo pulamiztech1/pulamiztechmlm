@@ -16,9 +16,9 @@ class Agent
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!Auth::guard('web')->check()){
-            return redirect()->route('memberLogin');
-        }
+        // if(!Auth::guard('web')->check()){
+        //     return redirect()->route('memberLogin');
+        // }
         return $next($request);
     }
 }

@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('fullname');
             $table->integer('referalID')->nullable();
-            $table->integer('phone_no');
+            $table->string('phone_no');
             $table->string('profileImage')->nullable();
             $table->date('membershipDate');
             $table->string('state')->nullable();

@@ -17,8 +17,8 @@ class AdminSeeder extends Seeder
     {
         DB::table('admins')->delete();
         $adminRecords = [
-        	['id'=>1,'name'=>'admin','role'=>'Admin','mobile'=>'9841782665','email'=>'admin@gmail.com','password'=>'$2y$10$l6s/VTvAjKG5ngWgTOue7Ojy9eZ6bUEWV2jAiJpO67NxO/DuSoHZS','profile_image'=>'','status'=>1],
-            ['id'=>2,'name'=>'santosh','role'=>'Admin','mobile'=>'9841782665','email'=>'santosh@gmail.com','password'=>Hash::make('santosh'),'profile_image'=>'','status'=>1],
+        	['id'=>1,'username'=>'admin','fullName'=>'admin','role'=>'Admin','phone'=>'9841782665','email'=>'admin@gmail.com','password'=>Hash::make('admin'),'status'=>1,'country_id'=>1,'state'=>'1','city'=>'brt','zip_code'=>'111','street_address'=>'brt'],
+            ['id'=>2,'username'=>'santosh','fullName'=>'santosh','role'=>'Admin','phone'=>'9841782665','email'=>'santosh@gmail.com','password'=>Hash::make('santosh'),'status'=>1,'country_id'=>1,'state'=>'1','city'=>'brt','zip_code'=>'111','street_address'=>'brt'],
         ];
         DB::table('admins')->insert($adminRecords);
     }
