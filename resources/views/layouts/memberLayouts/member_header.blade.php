@@ -34,7 +34,7 @@
                   <li class="nav-item">
                     <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
                       <img src="{{ asset('images/backend_images/member_profile/'.Auth::guard('agent')->user()->profile_image) }}" alt="" />
-                      <span class="admin-name">{{ ucwords(Auth::guard('agent')->user()->name) }}</span>
+                      <span class="admin-name">{{ ucwords(Auth::guard('agent')->user()->username) }}</span>
                       <i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
                     </a>
                     <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
