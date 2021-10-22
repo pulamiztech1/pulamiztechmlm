@@ -5,13 +5,18 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\ReferalCode;
+use App\Models\Matrix;
 use Auth;
 use Session;
 use Illuminate\Support\Facades\Mail;
 use App\Helpers\Helper;
 use Illuminate\Support\Str;
 use DB;
-
+use App\Library\ReferalCodeGenerator;
+use App\Library\UserNameGenerator;
+use Carbon\Carbon;
+use Hash;
 class UsersController extends Controller
 {
     public function memberDashboard(){
@@ -53,74 +58,83 @@ class UsersController extends Controller
     }
 
     public function memberRegister(Request $request){
+
         if($request->isMethod('post')){
             Session::forget('error_message');
             Session::forget('success_message');
             $data = $request->all();
+            $referal_code_exist=ReferalCode::where('referal_code',$request->referrer_code)->first();
+            if(!$referal_code_exist){
+                session::flash('error_message','Invalid Referal Code');
+                return redirect()->back();
+            }
             //dd($data);die;
             $rules = [
                 'name' => 'required',
                 'email' => 'required|email|max:255',
-                'username' => 'required',
                 'password' => 'required',
-                'referrer_id' => 'required',
+                'referrer_code' => 'required',
             ];
 
             $customMessages = [
                 'name.required' => 'Name is required',
                 'email.required' => 'Email is required',
-                'email.unique' => 'This email is already used',
+                'email.unique:users' => 'This email is already used',
                 'email.email' => 'Valid Email is required',
                 'password.required' => 'Password is required',
-                'username.required' => 'Username is required',
-                'referrer_id.required' => 'Referral code is required',
+                'password.confirmed' => 'Password does not match with retyped password',
+                'referrer_code.required' => 'Referral code is required',
             ];
 
             $this->validate($request,$rules,$customMessages);
-            //dd($data);die;
-            $userCount = User::where('email',$data['email'])->count();
 
-            $userAutoID = Helper::USERIDGenerator(new User, 'own_id', 4, 'MM'); 
+            $matrix=Matrix::where('user_id',$referal_code_exist->user_id)->first();
 
-            $user = DB::table('users')
-            ->where('username', $data['referrer_id'])
-            ->where('status', '=', 'Approved')
-            ->first();
-
-            if(!$user) {
-                $message = "Your referral code is not valid!";
-                session::flash('error_message',$message);
-                return redirect()->back();
-            }else {
-                $referrer = $user->username;
-                $sponserID = $user->own_id;
-                $parentID = $user->id;
+            if($matrix->left_child != NULL && $matrix->middle_child!=NULL && $matrix->right_child!=NULL){
+                  Session::flash('error_message',"Exceeds limit of your referer try with another referer or mail us to get new referer");
+                  return redirect()->back();
             }
-            
-            if($userCount>0){
-                $message = "Email already exists!";
-                session::flash('error_message',$message);
-                return redirect()->back();
+            $user = User::create([
+                'referalID'=>$referal_code_exist->user_id,
+                'fullname' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'username'=>UserNameGenerator::generate($request->email),
+                'membershipDate'=>Carbon::now()->toDateString(),
+                'status'=>'inActive'
+            ]);
+    
+            $referal_code=ReferalCode::create([
+                 'user_id'=>$user->id,
+                 'referal_code'=>ReferalCodeGenerator::generate($user->id)
+            ]);
+            $level = $matrix->level+1;
+            $parent_id=$matrix->user_id;
+            if($matrix->left_child === NULL){
+                $key='left_child';
+            }elseif($matrix->middle_child === NULL){
+                $key='middle_child';
+            }elseif($matrix->right_child === NULL){
+                $key='right_child';
             }else{
-                $user = new User;
-                $user->name = $data['name'];           
-                $user->email = $data['email'];                
-                $user->username = $data['username'];                
-                $user->parent_id = $parentID;              
-                $user->sponser_id = $sponserID;              
-                $user->referrer_id = $referrer;              
-                $user->own_id = $userAutoID;                 
-                $user->password = bcrypt($data['password']);
-                $user->status = "New";
-                $user->save();
-
-
-               
-                $message = 'New member is added successfully! An Email has been sent to your member for further process';
-                Session::flash('success_message',$message);
+                Session::flash('error_message',"Exceeds limit of your referer try with another referer or mail us to get new referer");
                 return redirect()->back();
-                       
             }
+           
+            $matrix->update([
+                     $key =>$user->id
+            ]);
+            $new_matrix=Matrix::create([
+                        'user_id'=>$user->id,
+                        'parent_id'=>$parent_id,
+                        'level'=>$level
+            ]);
+    
+            $message = 'Registration Successfully Done .please Login to proceed';
+            Session::flash('success_message',$message);
+            return redirect()->route('memberLogin');
+                       
+            
         }
         return view('member.member_register');
     }

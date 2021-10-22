@@ -16,10 +16,10 @@ class CreateMatricesTable extends Migration
         Schema::create('matrices', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->integer('parent_id');
-            $table->integer('left_child');
-            $table->integer('middle_child');
-            $table->integer('right_child');
+            $table->integer('parent_id')->nullable();
+            $table->integer('left_child')->nullable();
+            $table->integer('middle_child')->nullable();
+            $table->integer('right_child')->nullable();
             $table->integer('level');
             $table->timestamps();
         });

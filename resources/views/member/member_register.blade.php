@@ -67,26 +67,23 @@
             </ul>
           </div>
           @endif
-          <form method="post" action="#">@csrf
+          <form method="post" action="{{route('memberRegister')}}">
+            @csrf
             <h3 class="nomargin">Sign Up</h3>
             <p class="mt5 mb20">Already a member? <a href="{{route('memberLogin')}}"><strong>Sign In</strong></a></p>
             <input type="hidden" name="parent_id" id="parent_id">
             <input type="hidden" name="sponser_id" id="sponser_id">
-            <div class="mb10">
+            <div class="mb-10">
             <label class="control-label">Name</label>
                 <input type="text" name="name" id="name" class="form-control" placeholder="Your name" />
-            </div>
-            <div class="mb10">
-              <label class="control-label">Username</label>
-              <input type="text" name="username" id="username" class="form-control" />
             </div>
             <div class="mb10">
               <label class="control-label">Email Address</label>
               <input type="email" name="email" id="email" class="form-control" />
             </div>
             <div class="mb10">
-              <label class="control-label">Referrer</label>
-              <input type="text" name="referrer_id" id="referrer_id" class="form-control" />
+              <label class="control-label">Referrer Code</label>
+              <input type="text" name="referrer_code" id="referrer_id" class="form-control" />
               <small><a href="#">Don't have a referral code?</a></small>
             </div>
             <div class="mb10">
@@ -95,7 +92,7 @@
             </div>
             <div class="mb10">
               <label class="control-label">Retype Password</label>
-              <input type="password" class="form-control" />
+              <input type="password" class="form-control" name="confirmed" />
             </div>
             <br />
             <button class="btn btn-success btn-block">Sign Up</button>

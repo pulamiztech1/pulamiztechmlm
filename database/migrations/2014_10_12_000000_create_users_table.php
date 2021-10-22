@@ -20,14 +20,14 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('fullname');
             $table->integer('referalID')->nullable();
-            $table->string('phone_no');
+            $table->string('phone_no')->nullable();
             $table->string('profileImage')->nullable();
             $table->date('membershipDate');
             $table->string('state')->nullable();
             $table->string('city')->nullable();
             $table->string('zipcode')->nullable();
             $table->string('address')->nullable();
-            $table->integer('credit_card_id');
+            $table->integer('credit_card_id')->nullable();
             $table->string('status');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
