@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('fullname');
             $table->integer('referalID')->nullable();
             $table->string('phone_no')->nullable();
+            $table->string('date_of_birth')->nullable();
+            $table->enum('gender',['Female','Male','Other'])->nullable();
             $table->string('profileImage')->nullable();
             $table->date('membershipDate');
             $table->string('state')->nullable();

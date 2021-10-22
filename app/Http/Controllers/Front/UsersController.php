@@ -17,6 +17,7 @@ use App\Library\ReferalCodeGenerator;
 use App\Library\UserNameGenerator;
 use Carbon\Carbon;
 use Hash;
+
 class UsersController extends Controller
 {
     public function memberDashboard(){
@@ -142,5 +143,12 @@ class UsersController extends Controller
         Auth::guard('agent')->logout();
         Session::flash('success_message','Logout Successfull!');
     	return redirect()->route('memberLogin');
+    }
+    public function updateMemberDetails (Request $request){
+       if($request->isMethod('post')){
+           
+       }else{
+          return view('member.members.update_member_details');
+       }
     }
 }

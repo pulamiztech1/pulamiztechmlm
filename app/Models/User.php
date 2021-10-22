@@ -31,7 +31,9 @@ class User extends Authenticatable
         'zipcode',
         'address',
         'credit_card_id',
-        'status'
+        'status',
+        'date_of_birth',
+        'gender'
     ];
 
     /**
