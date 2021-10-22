@@ -52,7 +52,8 @@
                   <li class="nav-item">
                     <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
                       <img src="{{ asset('images/backend_images/member_profile/'.Auth::guard('agent')->user()->profile_image) }}" alt="" />
-                      <span class="admin-name">{{Auth::guard('agent')->user()->wallet()}}</span>
+                      <span class="admin-name">0.00</span>
+                      {{-- //wallet amount --}}
                     </a>                    
                   </li>
                 </ul>
