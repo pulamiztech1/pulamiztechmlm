@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 
 use App\Models\User;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\UserController;
 
 //Front Controllers
 use App\Http\Controllers\Front\IndexController;
@@ -31,10 +30,10 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){
 		Route::get('/delete-admin-profile-image/{id}',[AdminController::class, 'deleteAdminProfileImage'])->name('deleteAdminProfileImage');
 
 		//Member Users tours
-		Route::get('/view-users',[UserController::class, 'viewUsers'])->name('viewUsers');
+		Route::get('/view-users',[AdminController::class, 'viewUsers'])->name('viewUsers');
 		Route::get('/view-members',[AdminController::class, 'viewAllMembers'])->name('viewAllMembers');
 		Route::get('/view-member-details/{own_id}',[AdminController::class, 'memberAdminDetails'])->name('memberAdminDetails');
-		Route::post('/update-user-status',[UserController::class, 'updateUserStatus'])->name('updateUserStatus');
+		Route::post('/update-user-status',[AdminController::class, 'updateUserStatus'])->name('updateUserStatus');
 
 			
 	});
@@ -51,7 +50,7 @@ Route::namespace('Front')->group(function(){
 	Route::match(['get','post'],'/check-email',[UsersController::class,'checkEmail']);
 	Route::match(['get','post'],'/forgot-password',[UsersController::class,'forgotPassword']);
 	Route::post('/confirm/{code}',[UsersController::class,'confirmAccount']);
-	Route::get('/user-logout',[UsersController::class,'userLogosut']);
+	Route::get('/user-logout',[UsersController::class,'userLogout']);
 
 	//Confirm Account 
 	Route::match(['GET','POST'],'/confirm/{code}',[UsersController::class,'confirmAccount']);
@@ -68,28 +67,28 @@ Route::namespace('Front')->group(function(){
 		//Route for Account Page
 		Route::get('/member-dashboard', [UsersController::class, 'memberDashboard'])->name('memberDashboard');
 		Route::match(['GET','POST'], '/user-account', 'UsersController@account')->name('userAccount');
-		Route::get('/view-member-details/{own_id}', [UserController::class, 'viewMemberDetails'])->name('viewMemberDetails');
-		Route::match(['GET','POST'], '/update-member-details', [UserController::class, 'updateMemberDetails'])->name('updateMemberDetails');
+		Route::get('/view-member-details/{own_id}', [UsersController::class, 'viewMemberDetails'])->name('viewMemberDetails');
+		Route::match(['GET','POST'], '/update-member-details', [UsersController::class, 'updateMemberDetails'])->name('updateMemberDetails');
 
-		Route::get('/user-settings', [UserController::class, 'userSettings'])->name('userSettings');
+		Route::get('/user-settings', [UsersController::class, 'userSettings'])->name('userSettings');
 		
-		Route::post('/check-user-current-pwd', [UserController::class, 'checkCurrentPwd']); 
+		Route::post('/check-user-current-pwd', [UsersController::class, 'checkCurrentPwd']); 
 
-		Route::post('/update-user-password',[UserController::class, 'updateUserCurrentPassword'])->name('userUpdatePassword');
-		Route::get('/member-logout', [UserController::class, 'memberLogout'])->name('memberLogout');
+		Route::post('/update-user-password',[UsersController::class, 'updateUserCurrentPassword'])->name('userUpdatePassword');
+		Route::get('/member-logout', [UsersController::class, 'memberLogout'])->name('memberLogout');
 
-		Route::post('/update_walllet', [UserController::class, 'updateWallet'])->name('updateWallet');
+		Route::post('/update_walllet', [UsersController::class, 'updateWallet'])->name('updateWallet');
 
 		//Members Route				
-		Route::get('/view-my-members/{own_id}',[UserController::class, 'viewMyMembers'])->name('viewMyMembers');		
-		Route::post('/update-my-member-status',[UserController::class, 'updateMyMemberStatus'])->name('updateMyMemberStatus');
-		Route::get('/member/{own_id}', [UserController::class, 'memberDetails'])->name('memberDetails');
-		Route::post('/update-member-status/{id}',[UserController::class, 'updateMemberStatus'])->name('updateMemberStatus');
+		Route::get('/view-my-members/{own_id}',[UsersController::class, 'viewMyMembers'])->name('viewMyMembers');		
+		Route::post('/update-my-member-status',[UsersController::class, 'updateMyMemberStatus'])->name('updateMyMemberStatus');
+		Route::get('/member/{own_id}', [UsersController::class, 'memberDetails'])->name('memberDetails');
+		Route::post('/update-member-status/{id}',[UsersController::class, 'updateMemberStatus'])->name('updateMemberStatus');
 
 		
 
-		Route::match(['GET','POST'],'/add-new-member', [UserController::class, 'addNewMember'])->name('addNewMember');
-		Route::get('/delete-member-profile-image/{id}',[UserController::class, 'deleteMemberProfileImage'])->name('deleteMemberProfileImage');
-		Route::get('/delete-member/{id}',[UserController::class, 'deleteMember'])->name('deleteMember');	
+		Route::match(['GET','POST'],'/add-new-member', [UsersController::class, 'addNewMember'])->name('addNewMember');
+		Route::get('/delete-member-profile-image/{id}',[UsersController::class, 'deleteMemberProfileImage'])->name('deleteMemberProfileImage');
+		Route::get('/delete-member/{id}',[UsersController::class, 'deleteMember'])->name('deleteMember');	
 	});
 });

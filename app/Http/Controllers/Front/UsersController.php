@@ -138,4 +138,9 @@ class UsersController extends Controller
         }
         return view('member.member_register');
     }
+    public function memberLogout() {
+        Auth::guard('agent')->logout();
+        Session::flash('success_message','Logout Successfull!');
+    	return redirect()->route('memberLogin');
+    }
 }
