@@ -146,7 +146,24 @@ class UsersController extends Controller
     }
     public function updateMemberDetails (Request $request){
        if($request->isMethod('post')){
-           
+            $profile_image=$request->file('profile_image');
+            $fileName = $profile_image->getClientOriginalName();
+            $fileName=time().$fileName;
+            $destinationPath = public_path().'/images/backend_images/member_profile/';    
+            $profile_image->move($destinationPath,$fileName);
+            $user=User::where('id',Auth::guard('agent')->user()->id)->update([
+                    'fullname'=>$request->fullname,
+                    'phone_no'=>$request->phone_no,
+                    'date_of_birth'=>$request->date_of_birth,
+                    'gender'=>$request->gender,
+                    'state'=>$request->state,
+                    'city'=>$request->city,
+                    'address'=>$request->address,
+                    'zipcode'=>$request->zipcode,
+                    'profileImage'=>$fileName
+             ]);
+             Session::flash('success_message','Your Details has been successfully updated ');
+             return redirect()->back();
        }else{
           return view('member.members.update_member_details');
        }

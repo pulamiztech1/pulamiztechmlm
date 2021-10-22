@@ -67,14 +67,15 @@
               <h1>Update your details</h1>
             </div>
           </div>
-          <form action="{{ route('updateMemberDetails') }}" method="post" enctype="multipart/form-data">@csrf
+          <form action="{{ route('updateMemberDetails') }}" method="post" enctype="multipart/form-data">
+            @csrf
             <div class="sparkline10-graph">
               <div class="input-knob-dial-wrap">
                 <div class="row">
                   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="chosen-select-single mg-b-20">
                       <label>Full Name</label>
-                      <input type="text" name="fullname" id="name" class="form-control" value="{{ Auth::guard('agent')->user()->name }}" readonly="" />
+                      <input type="text" name="fullname" id="name" class="form-control" value="{{ Auth::guard('agent')->user()->name }}" />
                     </div>
                     {{-- <div class="chosen-select-single mg-b-20">
                       <label>Email</label>
