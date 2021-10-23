@@ -180,4 +180,8 @@ class UsersController extends Controller
         $right_child=User::where('id',$matrix->right_child)->first();
         return view('member.members.view_my_matrix',compact('left_child', 'middle_child', 'right_child'));
     }
+    public function viewMemberDetails($member_id){
+       $memberDetails=User::findOrFail($member_id);
+       return view('member.members.my_member_details',compact('memberDetails'));
+    }
 }

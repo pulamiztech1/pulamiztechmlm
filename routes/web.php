@@ -67,7 +67,7 @@ Route::namespace('Front')->group(function(){
 		//Route for Account Page
 		Route::get('/member-dashboard', [UsersController::class, 'memberDashboard'])->name('memberDashboard');
 		Route::match(['GET','POST'], '/user-account', 'UsersController@account')->name('userAccount');
-		Route::get('/view-member-details/{own_id}', [UsersController::class, 'viewMemberDetails'])->name('viewMemberDetails');
+		Route::get('/view-member-details/{member_id}', [UsersController::class, 'viewMemberDetails'])->name('viewMemberDetails');
 		Route::match(['GET','POST'], '/update-member-details', [UsersController::class, 'updateMemberDetails'])->name('updateMemberDetails');
 
 		Route::get('/user-settings', [UsersController::class, 'userSettings'])->name('userSettings');
