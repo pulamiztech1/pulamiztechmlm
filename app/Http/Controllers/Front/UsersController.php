@@ -184,4 +184,13 @@ class UsersController extends Controller
        $memberDetails=User::findOrFail($member_id);
        return view('member.members.my_member_details',compact('memberDetails'));
     }
+    public function updateMemberStatus(Request $request,$member_id){
+        User::where('id',$member_id)->update([
+              'status'=>$request->status,
+        ]);
+        Session::flash('success_message','Status Successfully Updated!!');
+        return redirect()->back();
+
+
+    }
 }

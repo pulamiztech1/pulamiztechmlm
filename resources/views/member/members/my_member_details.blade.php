@@ -168,30 +168,29 @@
             <div class="product-tab-list tab-pane fade" id="updateStatus">
               <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <form action="{{ route('updateMemberStatus', $memberDetails->id) }}" method="POST"> @csrf
-                  <div class="review-content-section">
-                    <div class="row">
-                      <div class="col-lg-6">
-                        <div class="form-group">
-                          <select class="form-control" name="status">
-                            <option value="">Select Status</option>
-                            <option value="New">New</option>
-                            <option value="Pending">Pending</option>
-                            <option value="Processing">Processing</option>
-                            <option value="Approved">Approved</option>
-                            <option value="Canceled">Canceled</option>
-                          </select>
+                  <form action="{{ route('updateMemberStatus', $memberDetails->id) }}" method="POST"> 
+                    @csrf
+                    <div class="review-content-section">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <select class="form-control" name="status">
+                              <option value="Pending">Pending</option>
+                              <option value="Processing">Processing</option>
+                              <option value="Approved">Approved</option>
+                              <option value="Canceled">Canceled</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="payment-adress mg-t-15">
+                            <button type="submit" class="btn btn-primary waves-effect waves-light mg-b-15">Submit</button>
+                          </div>
                         </div>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-lg-12">
-                        <div class="payment-adress mg-t-15">
-                          <button type="submit" class="btn btn-primary waves-effect waves-light mg-b-15">Submit</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                   </form>
                 </div>
               </div>
