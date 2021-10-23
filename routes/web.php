@@ -84,7 +84,8 @@ Route::namespace('Front')->group(function(){
 		Route::post('/update-my-member-status',[UsersController::class, 'updateMyMemberStatus'])->name('updateMyMemberStatus');
 		Route::get('/member/{own_id}', [UsersController::class, 'memberDetails'])->name('memberDetails');
 		Route::post('/update-member-status/{id}',[UsersController::class, 'updateMemberStatus'])->name('updateMemberStatus');
-
+		Route::get('/view-my-matrix',[UsersController::class, 'viewMyMatrix'])->name('viewMyMatrix');
+        
 		
 
 		Route::match(['GET','POST'],'/add-new-member', [UsersController::class, 'addNewMember'])->name('addNewMember');

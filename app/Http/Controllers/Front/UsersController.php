@@ -18,6 +18,7 @@ use App\Library\UserNameGenerator;
 use Carbon\Carbon;
 use Hash;
 
+
 class UsersController extends Controller
 {
     public function memberDashboard(){
@@ -171,5 +172,12 @@ class UsersController extends Controller
     public function viewMyMembers(){
         $members=User::where('referalID',Auth::guard('agent')->id())->get();
         return view('member.members.view_my_members',compact('members'));
+    }
+    public function viewMyMatrix(){
+        $matrix=Matrix::where('user_id',Auth::guard('agent')->id())->first();
+        $left_child=User::where('id',$matrix->left_child)->first();
+        $middle_child=User::where('id',$matrix->middle_child)->first();
+        $right_child=User::where('id',$matrix->right_child)->first();
+        return view('member.members.view_my_matrix',compact('left_child', 'middle_child', 'right_child'));
     }
 }

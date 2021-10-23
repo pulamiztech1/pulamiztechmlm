@@ -13,7 +13,7 @@
           <a class="has-arrow" href="all-professors.html" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Members</span></a>
           <ul class="submenu-angle" aria-expanded="false">
             <li><a title="My Sponser" href="{{route('viewMyMembers')}}"><span class="mini-sub-pro">My Members</span></a></li>
-            <li><a title="My Matrix" href="#"><span class="mini-sub-pro">My Matrix</span></a></li>
+            <li><a title="My Matrix" href="{{route('viewMyMatrix')}}"><span class="mini-sub-pro">My Matrix</span></a></li>
           </ul>
         </li>
         <li>

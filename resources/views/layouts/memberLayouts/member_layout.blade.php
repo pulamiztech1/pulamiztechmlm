@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{ url('css/backend_css/owl.carousel.css') }}">
     <link rel="stylesheet" href="{{ url('css/backend_css/owl.theme.css') }}">
     <link rel="stylesheet" href="{{ url('css/backend_css/owl.transitions.css') }}">
+    <link rel="stylesheet" href="{{ url('css/frontend_css/custom.css') }}">
     <!-- animate CSS ============================================ -->
     <link rel="stylesheet" href="{{ url('css/backend_css/animate.css') }}">
     <!-- normalize CSS ============================================ -->
@@ -59,6 +60,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">  
     <!-- modernizr JS ============================================ -->
     <script src="{{ url('js/backend_js/vendor/modernizr-2.8.3.min.js') }}"></script>
+    <link href="https://unpkg.com/treeflex/dist/css/treeflex.css" rel="stylesheet">
+
 </head>
 
 <body>
