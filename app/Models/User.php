@@ -72,4 +72,13 @@ class User extends Authenticatable
     public function orders(){
         return $this->hasMany(Order::class,'user_id');
     }
+    public function left_matrix(){
+        return $this->hasOne(User::class,'left_child','id');
+    } 
+    public function middle_matrix(){
+        return $this->hasOne(User::class,'middle_child','id');
+    }
+     public function right_matrix(){
+        return $this->hasOne(User::class,'right_child','id');
+    }
 }

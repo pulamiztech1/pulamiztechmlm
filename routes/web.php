@@ -80,7 +80,7 @@ Route::namespace('Front')->group(function(){
 		Route::post('/update_walllet', [UsersController::class, 'updateWallet'])->name('updateWallet');
 
 		//Members Route				
-		Route::get('/view-my-members/{own_id}',[UsersController::class, 'viewMyMembers'])->name('viewMyMembers');		
+		Route::get('/view-my-members',[UsersController::class, 'viewMyMembers'])->name('viewMyMembers');		
 		Route::post('/update-my-member-status',[UsersController::class, 'updateMyMemberStatus'])->name('updateMyMemberStatus');
 		Route::get('/member/{own_id}', [UsersController::class, 'memberDetails'])->name('memberDetails');
 		Route::post('/update-member-status/{id}',[UsersController::class, 'updateMemberStatus'])->name('updateMemberStatus');

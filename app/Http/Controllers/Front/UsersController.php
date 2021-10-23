@@ -168,4 +168,8 @@ class UsersController extends Controller
           return view('member.members.update_member_details');
        }
     }
+    public function viewMyMembers(){
+        $members=User::where('referalID',Auth::guard('agent')->id())->get();
+        return view('member.members.view_my_members',compact('members'));
+    }
 }
