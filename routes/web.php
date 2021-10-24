@@ -78,7 +78,8 @@ Route::namespace('Front')->group(function(){
 		Route::get('/member-logout', [UsersController::class, 'memberLogout'])->name('memberLogout');
 
 		Route::post('/update_walllet', [UsersController::class, 'updateWallet'])->name('updateWallet');
-
+        Route::get('/myWallet', [UsersController::class, 'myWallet'])->name('myWallet');
+        Route::get('/TransactionHistory', [UsersController::class, 'TransactionHistory'])->name('TransactionHistory');
 		//Members Route				
 		Route::get('/view-my-members',[UsersController::class, 'viewMyMembers'])->name('viewMyMembers');		
 		Route::post('/update-my-member-status',[UsersController::class, 'updateMyMemberStatus'])->name('updateMyMemberStatus');

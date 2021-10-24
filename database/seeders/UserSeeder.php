@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\ReferalCode;
 use App\Models\Matrix;
+use App\Models\Wallet;
 use Hash;
 class UserSeeder extends Seeder
 {
@@ -34,6 +35,10 @@ class UserSeeder extends Seeder
        Matrix::create([
            'user_id'=>$user->id,
            'level' =>0
+       ]);
+       Wallet::create([
+              'user_id'=>$user->id,
+              'amount' =>200
        ]);
     }
 }

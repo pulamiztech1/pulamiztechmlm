@@ -26,8 +26,8 @@
         <li>
           <a class="has-arrow" href="all-professors.html" aria-expanded="false"><i class="fas fa-wallet"></i>&nbsp;&nbsp; <span class="mini-click-non">Wallets</span></a>
           <ul class="submenu-angle" aria-expanded="false">
-            <li><a title="Add new member" href="#"><span class="mini-sub-pro">My Wallet</span></a></li>
-            <li><a title="My Sponser" href="#"><span class="mini-sub-pro">Transactions History</span></a></li>
+            <li><a title="Add new member" href="{{route('myWallet')}}"><span class="mini-sub-pro">My Wallet</span></a></li>
+            <li><a title="My Sponser" href="{{route('TransactionHistory')}}"><span class="mini-sub-pro">Transactions History</span></a></li>
           </ul>
         </li>
         <li>

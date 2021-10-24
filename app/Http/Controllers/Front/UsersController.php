@@ -226,4 +226,7 @@ class UsersController extends Controller
 
 
     }
+    public function myWallet(){
+        return 'myWallet';
+    }
 }
