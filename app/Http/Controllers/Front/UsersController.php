@@ -236,4 +236,10 @@ class UsersController extends Controller
         $user=User::with('transaction_histories')->findOrFail(Auth::guard('agent')->id());
         return $user;
     }
+    public function RequestNewPins(){
+        return 'RequestNewPins';
+    }
+    public function ViewPins(){
+        return 'ViewPins';
+    }
 }

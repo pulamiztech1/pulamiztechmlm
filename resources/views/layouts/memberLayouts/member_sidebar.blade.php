@@ -19,8 +19,8 @@
         <li>
           <a class="has-arrow" href="all-professors.html" aria-expanded="false"><i class="fas fa-thumbtack"></i>&nbsp;&nbsp; <span class="mini-click-non">E-pins</span></a>
           <ul class="submenu-angle" aria-expanded="false">
-            <li><a title="Add new member" href="{{ route('addNewMember') }}"><span class="mini-sub-pro">Request New Pins</span></a></li>
-            <li><a title="My Sponser" href="#"><span class="mini-sub-pro">View Pins</span></a></li>
+            <li><a title="Add new member" href="{{route('RequestNewPins')}}"><span class="mini-sub-pro">Request New Pins</span></a></li>
+            <li><a title="My Sponser" href="{{route('ViewPins')}}"><span class="mini-sub-pro">View Pins</span></a></li>
           </ul>
         </li>
         <li>
