@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\ReferalCode;
 use App\Models\Matrix;
+use App\Models\Wallet;
+use App\Models\TransactionHistory;
 use Auth;
 use Session;
 use Illuminate\Support\Facades\Mail;
@@ -227,6 +229,11 @@ class UsersController extends Controller
 
     }
     public function myWallet(){
-        return 'myWallet';
+        $user=User::with('wallet','transaction_histories')->findOrFail(Auth::guard('agent')->id());
+        return $user;
+    }
+    public function TransactionHistory(){
+        $user=User::with('transaction_histories')->findOrFail(Auth::guard('agent')->id());
+        return $user;
     }
 }
