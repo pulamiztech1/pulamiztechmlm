@@ -91,8 +91,8 @@
                             <label class="login2 pull-right pull-right-pro">Current Password</label>
                           </div>
                           <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                            <input type="password" name="user_current_pwd" id="user_current_pwd" class="form-control" />
-                            <span id="chkUserCurrentPwd"></span>
+                            <input type="password" name="user_current_pwd" id="user_current_pwds" class="form-control" />
+                            <span id="chkUserCurrentPwds"></span>
                           </div>
                         </div>
                       </div>
