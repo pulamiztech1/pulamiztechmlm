@@ -147,8 +147,36 @@ class UsersController extends Controller
     }
     public function updateUserCurrentPassword(Request $request){
         if($request->isMethod('post')){
-            return $request;
+            $rules = [
+                'user_current_pwd' => 'required',
+                'password' => 'required',
+                'confirmed' => 'required',
+            ];
+
+            $customMessages = [
+                'password.required' => 'Password is required',
+                'password.confirmed' => 'Password does not match with retyped password',
+                'user_current_pwd.required' => 'User Current Password is required',
+                'confirmed.required' => 'confirmed password is required'
+            ];
+
+            $this->validate($request,$rules,$customMessages);
+
+            if (Hash::check($request->user_current_pwd, Auth::guard('agent')->user()->password)) {
+                User::where('id',Auth::guard('agent')->user()->id)->update([
+                    'password'=>Hash::make($request->password),
+                ]);
+                Session::flash('success_message','Password successfully changed.');
+                return redirect()->back();
+
+            }else{
+                Session::flash('error_message',"Provided password is incorrect");
+                return redirect()->back();
+
+            }
+            
         }else{
+            
             return view('member.members.update_member_password');
         }
     }

@@ -49,6 +49,7 @@
 </div>
 @endif
 
+
 <div class="basic-form-area mg-b-15">
   <div class="container-fluid">
     <div class="row">
@@ -59,6 +60,15 @@
               <h1>Password Update Form</h1>
             </div>
           </div>
+          @if ($errors->any())
+           <div class="alert alert-danger">
+              <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+         @endif
           <div class="sparkline12-graph">
             <div class="basic-login-form-ad">
               <div class="row">
@@ -71,7 +81,7 @@
                             <label class="login2 pull-right pull-right-pro">Email Address</label>
                           </div>
                           <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                            <input type="email" class="form-control" value=""/>
+                            <input type="email" class="form-control" value="{{Auth::guard('agent')->user()->email}}" readonly/>
                           </div>
                         </div>
                       </div> 
@@ -92,17 +102,17 @@
                             <label class="login2 pull-right pull-right-pro">New Password</label>
                           </div>
                           <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                            <input type="password" id="user_new_pwd" name="user_new_pwd" class="form-control password_errors" />
+                            <input type="password" id="password" name="password" class="form-control password_errors" />
                           </div>
                         </div>
                       </div>
                       <div class="form-group-inner">
                         <div class="row">
                           <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                            <label class="login2 pull-right pull-right-pro">Confirm Passord</label>
+                            <label class="login2 pull-right pull-right-pro">Confirm New Password</label>
                           </div>
                           <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                            <input type="password" id="user_confirm_pwd" name="user_confirm_pwd" class="form-control password_errors" />
+                            <input type="password" id="confirmed" name="confirmed" class="form-control password_errors" />
                           </div>
                         </div>
                       </div>
