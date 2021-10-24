@@ -71,7 +71,7 @@
                             <label class="login2 pull-right pull-right-pro">Email Address</label>
                           </div>
                           <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                            <input type="email" class="form-control" value="{{ $memberDetails->email }}" readonly="" />
+                            <input type="email" class="form-control" value=""/>
                           </div>
                         </div>
                       </div> 
@@ -106,7 +106,7 @@
                           </div>
                         </div>
                       </div>
-                      <button class="btn btn-sm btn-primary pull-right login-submit-cs" type="submit">Submit</button>
+                      <button class="btn btn-sm btn-primary pull-right login-submit-cs" type="submit">Change Password</button>
                     </form>
                   </div>
                 </div>

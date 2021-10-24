@@ -74,7 +74,7 @@ Route::namespace('Front')->group(function(){
 		
 		Route::post('/check-user-current-pwd', [UsersController::class, 'checkCurrentPwd']); 
 
-		Route::post('/update-user-password',[UsersController::class, 'updateUserCurrentPassword'])->name('userUpdatePassword');
+		Route::match(['GET','POST'],'/update-user-password',[UsersController::class, 'updateUserCurrentPassword'])->name('userUpdatePassword');
 		Route::get('/member-logout', [UsersController::class, 'memberLogout'])->name('memberLogout');
 
 		Route::post('/update_walllet', [UsersController::class, 'updateWallet'])->name('updateWallet');

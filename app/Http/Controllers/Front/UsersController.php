@@ -145,6 +145,13 @@ class UsersController extends Controller
         Session::flash('success_message','Logout Successfull!');
     	return redirect()->route('memberLogin');
     }
+    public function updateUserCurrentPassword(Request $request){
+        if($request->isMethod('post')){
+            return $request;
+        }else{
+            return view('member.members.update_member_password');
+        }
+    }
     public function updateMemberDetails (Request $request){
        if($request->isMethod('post')){
             $profile_image=$request->file('profile_image');

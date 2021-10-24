@@ -42,7 +42,7 @@
                         <a href="{{ route('updateMemberDetails') }}"><span class="edu-icon edu-user-rounded author-log-ic"></span>Update Details</a>
                       </li>
                       <li>
-                        <a href="{{ route('userSettings') }}"><span class="edu-icon edu-settings author-log-ic"></span>Change Password</a>
+                        <a href="{{ route('userUpdatePassword') }}"><span class="edu-icon edu-settings author-log-ic"></span>Change Password</a>
                       </li>
                       <li>
                         <a href="{{ route('memberLogout')}}"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
