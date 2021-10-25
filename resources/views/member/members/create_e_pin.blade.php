@@ -74,7 +74,7 @@
               <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <div class="all-form-element-inner">
-                    <form action="{{ route('RequestNewPins') }}" method="post">
+                    <form action="{{route('RequestNewPins')}}" method="POST">
                       @csrf
                       <div class="form-group-inner">
                   
@@ -87,7 +87,7 @@
                             <label class="login2 pull-right pull-right-pro">Transaction Pin</label>
                           </div>
                           <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                            <input type="password" id="password" name="password" class="form-control password_errors" />
+                            <input type="password" id="pin" name="pin" class="form-control password_errors" />
                           </div>
                         </div>
                       </div>

@@ -240,7 +240,7 @@ class UsersController extends Controller
     public function RequestNewPins(Request $request){
         if($request->isMethod('post')){
             $rules = [
-                'pin' => 'required|numeric|size:4|confirmed',
+                'pin' => 'required|numeric|size:4|confirmed|bail',
                 'confirmed' => 'required',
             ];
 

@@ -86,9 +86,7 @@ Route::namespace('Front')->group(function(){
 		Route::get('/member/{own_id}', [UsersController::class, 'memberDetails'])->name('memberDetails');
 		Route::post('/update-member-status/{member_id}',[UsersController::class, 'updateMemberStatus'])->name('updateMemberStatus');
 		Route::get('/view-my-matrix',[UsersController::class, 'viewMyMatrix'])->name('viewMyMatrix');
-        
-		
-        Route::match(['GET','POST'],'Request-New-Pins',[UsersController::class, 'RequestNewPins'])->name('RequestNewPins');
+        Route::match(['GET','POST'],'Request-New-Pins',[UsersController::class,'RequestNewPins'])->name('RequestNewPins');
         Route::get('View-Pins',[UsersController::class, 'ViewPins'])->name('ViewPins');
 		Route::match(['GET','POST'],'/add-new-member', [UsersController::class, 'addNewMember'])->name('addNewMember');
 		Route::get('/delete-member-profile-image/{id}',[UsersController::class, 'deleteMemberProfileImage'])->name('deleteMemberProfileImage');
