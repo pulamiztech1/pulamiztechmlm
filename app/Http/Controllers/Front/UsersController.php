@@ -272,20 +272,36 @@ class UsersController extends Controller
         }
     }
     public function updatePins(Request $request){
-        return $request;
-    }
-    public function ViewPins(){
         $rules = [
-            'pin' => 'required|digits:4|bail',
+            'current_pin' => 'required|bail',
+            'new_pin' => 'required|digits:4|bail',
             'confirmed' => 'required',
         ];
 
         $customMessages = [
-            'pin.required' => 'Transaction Pin is required',
-            'pin.numeric' => 'Transaction Pin must be numeric',
-            'pin.size' => 'Transaction Pin must be 4 digit',
+            'current_pin.required' => 'Current Transaction Pin is required',
+            'new_pin.digits' => 'Transaction Pin must be numeric',
+            'new_pin.required' => 'New Pin Transaction Required',
             'confirmed.required' => 'confirmed Transaction Pin is required'
         ];
         $this->validate($request,$rules,$customMessages);
+        if(strcmp($request->new_pin,$request->confirmed)!=0){
+            Session::flash('error_message',"Pin Doesnt match with confirmation");
+            return redirect()->back();
+
+        }
+        $pin=EPin::where('user_id',Auth::guard('agent')->user()->id)->first();
+        if(!Hash::check($request->current_pin, $pin->e_pin)){
+            Session::flash('error_message',"Incorrect Current Transaction Pin");
+            return redirect()->back();
+        } 
+        $pin->update([
+            'e_pin'=>Hash::make($request->new_pin)
+        ]);
+        Session::flash('success_message','Transaction Pin Successfully Changed');
+        return redirect()->back();
+    }
+    public function ViewPins(){
+       return 'ViewPins';
     }
 }
