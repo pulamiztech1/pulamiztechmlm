@@ -257,13 +257,14 @@ class UsersController extends Controller
                     'user_id' => Auth::guard('agent')->user()->id,
                     'e_pin'=>Hash::make($request->pin),
             ]);
-            
-            Session::flash('success_message','Pin Successfully Created');
+
+            Session::flash('success_message','Transaction Pin Successfully Created');
             return redirect()->back();
 
 
         }else{
-            return 'RequestNewPins';
+                return view('member.members.create_e_pin');
+
         }
     }
     public function ViewPins(){
