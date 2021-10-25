@@ -9,6 +9,7 @@ use App\Models\ReferalCode;
 use App\Models\Matrix;
 use App\Models\Wallet;
 use App\Models\TransactionHistory;
+use App\Models\EPin;
 use Auth;
 use Session;
 use Illuminate\Support\Facades\Mail;
@@ -236,8 +237,34 @@ class UsersController extends Controller
         $user=User::with('transaction_histories')->findOrFail(Auth::guard('agent')->id());
         return $user;
     }
-    public function RequestNewPins(){
-        return 'RequestNewPins';
+    public function RequestNewPins(Request $request){
+        if($request->isMethod('post')){
+            $rules = [
+                'pin' => 'required|numeric|size:4|confirmed',
+                'confirmed' => 'required',
+            ];
+
+            $customMessages = [
+                'pin.required' => 'pin is required',
+                'pin.numeric' => 'pin must be numeric',
+                'pin.size' => 'pin must be 4 digit',
+                'pin.confirmed' => 'pin doesnt match with confirmed',
+                'confirmed.required' => 'confirmed pin is required'
+            ];
+            $this->validate($request,$rules,$customMessages);
+
+            $e_pin=EPin::create([
+                    'user_id' => Auth::guard('agent')->user()->id,
+                    'e_pin'=>Hash::make($request->pin),
+            ]);
+            
+            Session::flash('success_message','Pin Successfully Created');
+            return redirect()->back();
+
+
+        }else{
+            return 'RequestNewPins';
+        }
     }
     public function ViewPins(){
         return 'ViewPins';
