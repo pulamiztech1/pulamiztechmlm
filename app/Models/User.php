@@ -81,4 +81,7 @@ class User extends Authenticatable
      public function right_matrix(){
         return $this->hasOne(User::class,'right_child','id');
     }
+    public function ePin(){
+        return $this->hasOne(EPin::class,'user_id','id');
+    }
 }
