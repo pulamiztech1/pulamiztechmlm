@@ -240,18 +240,21 @@ class UsersController extends Controller
     public function RequestNewPins(Request $request){
         if($request->isMethod('post')){
             $rules = [
-                'pin' => 'required|numeric|size:4|confirmed|bail',
+                'pin' => 'required|digits:4|bail',
                 'confirmed' => 'required',
             ];
 
             $customMessages = [
-                'pin.required' => 'pin is required',
-                'pin.numeric' => 'pin must be numeric',
-                'pin.size' => 'pin must be 4 digit',
-                'pin.confirmed' => 'pin doesnt match with confirmed',
-                'confirmed.required' => 'confirmed pin is required'
+                'pin.required' => 'Transaction Pin is required',
+                'pin.numeric' => 'Transaction Pin must be numeric',
+                'pin.size' => 'Transaction Pin must be 4 digit',
+                'confirmed.required' => 'confirmed Transaction Pin is required'
             ];
             $this->validate($request,$rules,$customMessages);
+            if(strcmp($request->pin,$request->confirmed)!=0){
+                Session::flash('error_message',"Pin Doesnt match with confirmations");
+                return redirect()->back();
+            }
 
             $e_pin=EPin::create([
                     'user_id' => Auth::guard('agent')->user()->id,
@@ -263,11 +266,26 @@ class UsersController extends Controller
 
 
         }else{
-                return view('member.members.create_e_pin');
+                $e_pin_exist=EPin::where('user_id',Auth::guard('agent')->user()->id)->first();
+                return view('member.members.create_e_pin',compact('e_pin_exist'));
 
         }
     }
+    public function updatePins(Request $request){
+        return $request;
+    }
     public function ViewPins(){
-        return 'ViewPins';
+        $rules = [
+            'pin' => 'required|digits:4|bail',
+            'confirmed' => 'required',
+        ];
+
+        $customMessages = [
+            'pin.required' => 'Transaction Pin is required',
+            'pin.numeric' => 'Transaction Pin must be numeric',
+            'pin.size' => 'Transaction Pin must be 4 digit',
+            'confirmed.required' => 'confirmed Transaction Pin is required'
+        ];
+        $this->validate($request,$rules,$customMessages);
     }
 }

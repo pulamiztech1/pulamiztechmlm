@@ -20,7 +20,11 @@
                   <span class="bread-slash">/</span>
                 </li>
                 <li>
-                  <span class="bread-blod">Create Transaction Pin</span>
+                  @if ($e_pin_exist)
+                     <span class="bread-blod">Change Transaction Pin</span>
+                  @else
+                     <span class="bread-blod">Create Transaction Pin</span>
+                  @endif
                 </li>
               </ul>
             </div>
@@ -57,7 +61,11 @@
         <div class="sparkline12-list">
           <div class="sparkline12-hd">
             <div class="main-sparkline12-hd">
-              <h1>Create Transaction Pin</h1>
+                @if($e_pin_exist)
+                  <h1>Change Transaction Pin</h1>
+                @else
+                  <h1>Create Transaction Pin</h1>
+              @endif
             </div>
           </div>
           @if ($errors->any())
@@ -74,35 +82,76 @@
               <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <div class="all-form-element-inner">
+                    @if($e_pin_exist)
+                        <form action="{{route('updatePins')}}" method="POST">
+                            @csrf
+                         
+                            <div class="form-group-inner">
+                            
+                            <div class="form-group-inner mt-5">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                   <label class="login2 pull-right pull-right-pro">Current Transaction Pin</label>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                    <input type="password" id="pin" name="current_pin" class="form-control password_errors" />
+                                </div>
+                            </div>
+                            </div>
+                            <div class="form-group-inner">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                    <label class="login2 pull-right pull-right-pro">New Transaction Pin</label>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                    <input type="password" id="confirmed" name="new_pin" class="form-control password_errors" />
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="form-group-inner">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                    <label class="login2 pull-right pull-right-pro">Confirm Transaction Pin</label>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                    <input type="password" id="confirmed" name="confirmed" class="form-control password_errors" />
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-sm btn-primary pull-right login-submit-cs" type="submit">Change Transaction Pin</button>
+                        </form>
+                    @else
                     <form action="{{route('RequestNewPins')}}" method="POST">
-                      @csrf
-                      <div class="form-group-inner">
-                  
-                      </div> 
-                      <div class="form-group-inner">
-                       
-                      <div class="form-group-inner mt-5">
-                        <div class="row">
-                          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                            <label class="login2 pull-right pull-right-pro">Transaction Pin</label>
-                          </div>
-                          <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                            <input type="password" id="pin" name="pin" class="form-control password_errors" />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group-inner">
-                        <div class="row">
-                          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                            <label class="login2 pull-right pull-right-pro">Confirm Transaction Pin</label>
-                          </div>
-                          <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                            <input type="password" id="confirmed" name="confirmed" class="form-control password_errors" />
+                        @csrf
+                        <div class="form-group-inner">
+                    
+                        </div> 
+                        <div class="form-group-inner">
+                         
+                        <div class="form-group-inner mt-5">
+                          <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                              <label class="login2 pull-right pull-right-pro">Transaction Pin</label>
+                            </div>
+                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                              <input type="password" id="pin" name="pin" class="form-control password_errors" />
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <button class="btn btn-sm btn-primary pull-right login-submit-cs" type="submit">Set Transaction Pin</button>
-                    </form>
+                        <div class="form-group-inner">
+                          <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                              <label class="login2 pull-right pull-right-pro">Confirm Transaction Pin</label>
+                            </div>
+                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                              <input type="password" id="confirmed" name="confirmed" class="form-control password_errors" />
+                            </div>
+                          </div>
+                        </div>
+                        <button class="btn btn-sm btn-primary pull-right login-submit-cs" type="submit">Set Transaction Pin</button>
+                      </form>
+                    @endif  
+                    
                   </div>
                 </div>
               </div>
