@@ -21,7 +21,6 @@ use App\Library\UserNameGenerator;
 use Carbon\Carbon;
 use Hash;
 
-
 class UsersController extends Controller
 {
     public function memberDashboard(){
