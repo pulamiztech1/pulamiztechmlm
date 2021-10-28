@@ -87,5 +87,64 @@ $(document).ready(function(){
 				alert("Error");
 			}
 		}); 
-	});	
+	});
+
+	//Update Slider Status
+	$(".updateSliderStatus").click(function(){
+		var status = $(this).children("i").attr("status");
+		var slider_id = $(this).attr("slider_id");		
+		$.ajax({
+			type:'post',
+			url:'/admin/update-slider-status',
+			data:{status:status,slider_id:slider_id},
+			success:function(resp){
+				if(resp['status']==0){
+					$("#slider-"+slider_id).html("<i class='fas fa-toggle-off' aria-hidden='true' status='Inactive'></i>");
+				}else if(resp['status']==1){
+					$("#slider-"+slider_id).html("<i class='fas fa-toggle-on' aria-hidden='true' status='Active'></i>");
+				}
+			},error:function(){
+				alert("Error");
+			}
+		}); 
+	});
+
+	//Update Product Status
+	$(".updateProductStatus").click(function(){
+		var status = $(this).children("i").attr("status");
+		var product_id = $(this).attr("product_id");		
+		$.ajax({
+			type:'post',
+			url:'/admin/update-product-status',
+			data:{status:status,product_id:product_id},
+			success:function(resp){
+				if(resp['status']==0){
+					$("#product-"+product_id).html("<i class='fas fa-toggle-off' aria-hidden='true' status='Inactive'></i>");
+				}else if(resp['status']==1){
+					$("#product-"+product_id).html("<i class='fas fa-toggle-on' aria-hidden='true' status='Active'></i>");
+				}
+			},error:function(){
+				alert("Error");
+			}
+		}); 
+	});
+	//Update Web Content Status
+	$(".updateWebContentStatus").click(function(){
+		var status = $(this).children("i").attr("status");
+		var web_content_id = $(this).attr("web_content_id");		
+		$.ajax({
+			type:'post',
+			url:'/admin/update-web-content-status',
+			data:{status:status,web_content_id:web_content_id},
+			success:function(resp){
+				if(resp['status']==0){
+					$("#web-content-"+web_content_id).html("<i class='fas fa-toggle-off' aria-hidden='true' status='Inactive'></i>");
+				}else if(resp['status']==1){
+					$("#web-content-"+web_content_id).html("<i class='fas fa-toggle-on' aria-hidden='true' status='Active'></i>");
+				}
+			},error:function(){
+				alert("Error");
+			}
+		}); 
+	});
 });

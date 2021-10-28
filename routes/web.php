@@ -5,10 +5,14 @@ use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\WebContentController;
 
 //Front Controllers
 use App\Http\Controllers\Front\IndexController;
 use App\Http\Controllers\Front\UsersController;
+use App\Http\Controllers\Front\ProductsController;
 
 Auth::routes();
 
@@ -36,6 +40,29 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){
 		Route::get('/view-member-details/{own_id}',[AdminController::class, 'memberAdminDetails'])->name('memberAdminDetails');
 		Route::post('/update-user-status',[UserController::class, 'updateUserStatus'])->name('updateUserStatus');
 
+		// Admin Slider Routes		
+		Route::post('/update-slider-status',[SliderController::class, 'updateSliderStatus']);
+		Route::match(['get','post'],'/add-edit-slider/{id?}',[SliderController::class, 'addEditSlider'])->name('addEditSlider');
+		Route::get('/view-sliders',[SliderController::class, 'viewSliders'])->name('viewSliders');
+		Route::get('delete-slider/{id}',[SliderController::class,'deleteSlider'])->name('deleteSlider');
+		Route::get('delete-slider-image/{id}',[SliderController::class, 'deleteSliderImage'])->name('deleteSliderImage');
+
+		// Admin Products Routes		
+		Route::post('/update-product-status',[ProductController::class, 'updateProductStatus']);
+		Route::match(['get','post'],'/add-edit-product/{id?}',[ProductController::class, 'addEditProduct'])->name('addEditProduct');
+		Route::get('/view-products',[ProductController::class, 'viewProducts'])->name('viewProducts');
+		Route::get('delete-product/{id}',[ProductController::class,'deleteProduct'])->name('deleteProduct');
+		Route::get('delete-product-image/{id}',[ProductController::class, 'deleteProductImage'])->name('deleteProductImage');
+		Route::get('/view-product-details/{id}',[ProductController::class,'productDetails'])->name('productDetails');
+
+		// Admin Web Contents Routes		
+		Route::post('/update-web-content-status',[WebContentController::class, 'updateWebContentStatus']);
+		Route::match(['get','post'],'/add-edit-web-content/{id?}',[WebContentController::class, 'addEditWebContent'])->name('addEditWebContent');
+		Route::get('/view-web-contents',[WebContentController::class, 'viewWebContents'])->name('viewWebContents');
+		Route::get('delete-web-content/{id}',[WebContentController::class,'deleteWebContent'])->name('deleteWebContent');
+		Route::get('delete-web-content-image/{id}',[WebContentController::class, 'deleteWebContentImage'])->name('deleteWebContentImage');
+		Route::get('/view-web-content-details/{id}',[WebContentController::class,'webContentDetails'])->name('webContentDetails');
+
 			
 	});
 });
@@ -61,6 +88,15 @@ Route::namespace('Front')->group(function(){
 
 	//users Account
 	Route::match(['GET','POST'],'/account',[UsersController::class,'userAccount']);
+
+	//Product Listing route
+	Route::get('/shop', [ProductsController::class, 'productsListing'])->name('productsListing');
+	Route::get('/product-details/{slug}', [ProductsController::class, 'productDetails'])->name('productDetails');
+	
+	//Add to cart routes
+	Route::post('/add-to-cart', [ProductsController::class, 'addToCart'])->name('addToCart');
+	Route::get('/cart', [ProductsController::class, 'cart'])->name('cart');
+	Route::post('/delete-cart-item', [ProductsController::class, 'deleteCartItem'])->name('deleteCartItem');
 
 
 	//Front Users Dashboard routes defined here

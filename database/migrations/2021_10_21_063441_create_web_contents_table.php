@@ -18,8 +18,10 @@ class CreateWebContentsTable extends Migration
             $table->foreignId('admin_id')->constrained('admins')->onDelete('cascade');
             $table->date('posted_date');
             $table->string('title');
-            $table->text('content');
+            $table->longText('content');
+            $table->string('web_content_image');
             $table->string('channel');
+            $table->tinyInteger('status');
             $table->timestamps();
         });
     }

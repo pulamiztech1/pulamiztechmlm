@@ -11,7 +11,7 @@ class Admin extends Authenticatable
     use HasFactory;
 	protected $guard = 'admin';
 	protected $fillable = [
-		'name', 'mobile','type', 'password', 'profile_image', 'status', 'created_at', 'updated_at'
+		'name', 'mobile', 'type', 'password', 'profile_image', 'status', 'created_at', 'updated_at'
 	];
 
 	protected $hidden = [
@@ -27,4 +27,8 @@ class Admin extends Authenticatable
 	protected $casts = [
 		'email_verified_at' => 'datetime',
 	];
+
+	public function webContents(){
+        return $this->hasMany(WebContent::class,'admin_id');
+    }
 }
