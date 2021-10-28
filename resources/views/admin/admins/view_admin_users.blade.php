@@ -73,7 +73,7 @@
 					                    @if(!empty($admin->profile_image) && file_exists($profileImagePath))
 					                    <img src="{{ asset('images/backend_images/admin_profile/'.$admin->profile_image) }}" style="width: 60px;">
 					                    @else
-					                    <img src="{{ asset('images/services/no-image.png') }}" style="width: 60px;">
+					                    <img src="{{ asset('images/backend_images/no-profile.jpg') }}" style="width: 60px;">
 					                    @endif
 					                </td>
 									<td>{{ $admin['mobile'] }}</td>

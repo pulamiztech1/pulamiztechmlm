@@ -54,6 +54,8 @@
     <!-- responsive CSS ============================================ -->
     <link rel="stylesheet" href="{{ url('css/backend_css/responsive.css') }}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">  
+    <!-- summernote CSS ======================================= -->
+    <link rel="stylesheet" href="{{ url('css/backend_css/summernote/summernote.css') }}">
     <!-- modernizr JS ============================================ -->
     <script src="{{ url('js/backend_js/vendor/modernizr-2.8.3.min.js') }}"></script>
 </head>
@@ -137,6 +139,8 @@
 
      <script src="{{ url('js/backend_js/tree-line/jstree.min.js') }}"></script>
     <script src="{{ url('js/backend_js/tree-line/jstree.active.js') }}"></script>
+    <script src="{{ url('js/backend_js/summernote/summernote.min.js') }}"></script>
+    <script src="{{ url('js/backend_js/summernote/summernote-active.js') }}"></script>
     <!-- main JS ============================================ -->
     <script src="{{ url('js/backend_js/main.js') }}"></script>
     <script src="{{ url('js/backend_js/admin_scripts.js') }}"></script>
