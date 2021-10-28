@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMatricesTable extends Migration
+class CreateEPinsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateMatricesTable extends Migration
      */
     public function up()
     {
-        Schema::create('matrices', function (Blueprint $table) {
+        Schema::create('e_pins', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->integer('parent_id')->nullable();
-            $table->integer('left_child')->nullable();
-            $table->integer('middle_child')->nullable();
-            $table->integer('right_child')->nullable();
-            $table->integer('level');
+            $table->string('e_pin');
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ class CreateMatricesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('matrices');
+        Schema::dropIfExists('e_pins');
     }
 }

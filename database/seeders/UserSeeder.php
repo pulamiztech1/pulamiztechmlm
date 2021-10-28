@@ -4,6 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\ReferalCode;
+use App\Models\Matrix;
+use App\Models\Wallet;
 use Hash;
 class UserSeeder extends Seeder
 {
@@ -14,7 +17,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
+        $user=User::create([
             'username'=>'skpandit',
             'email'=>'skpandit@gmail.com',
             'password'=>Hash::make('santosh'),
@@ -24,5 +27,18 @@ class UserSeeder extends Seeder
             'credit_card_id'=>1,
             'status'=>'active',
         ]);
+        ReferalCode::create([
+            'user_id'=>$user->id,
+            'referal_code' =>'12345',
+
+       ]);
+       Matrix::create([
+           'user_id'=>$user->id,
+           'level' =>0
+       ]);
+       Wallet::create([
+              'user_id'=>$user->id,
+              'amount' =>200
+       ]);
     }
 }

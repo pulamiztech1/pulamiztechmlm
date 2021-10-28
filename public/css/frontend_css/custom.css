@@ -1,0 +1,23 @@
+.tf-custom .tf-nc {
+    height:80px; 
+    width: 180px;
+    padding: 0;
+    background-color:dodgerblue;
+    border-radius:10;
+    border: none;
+  }
+  
+  
+  .tf-custom .tf-nc:before,
+  .tf-custom .tf-nc:after {
+    color: white;
+  }
+  .tf-nc{
+    color: white;
+    font-size:20px
+  }
+  .tf-tree .tf-nc{
+      border: none;
+  }
+  
+ 

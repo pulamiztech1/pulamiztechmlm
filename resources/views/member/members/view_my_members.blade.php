@@ -38,7 +38,7 @@
 			<div class="sparkline13-list">
 				<div class="sparkline13-hd">
 					<div class="main-sparkline13-hd">
-						<h1>Projects <span class="table-project-n">Data</span> Table</h1>
+						<h1>My <span class="table-project-n">Downlines</span> Members</h1>
 					</div>
 				</div>
 				<div class="sparkline13-graph">
@@ -65,25 +65,25 @@
 								</tr>
 							</thead>
 							<tbody>
-								@foreach($myUsers as $values)
+								@foreach($members as $member)
 								<tr>
-									<td>{{ $values['id'] }}</td>
-									<td>{{ $values['name'] }}</td>
+									<td>{{ $member->id}}</td>
+									<td>{{ $member->name}}</td>
 									<td>
-									<?php $profileImagePath = "images/backend_images/member_profile/".$values->profile_image; ?>
-					                    @if(!empty($values->profile_image) && file_exists($profileImagePath))
-					                    <img src="{{ asset('images/backend_images/member_profile/'.$values->profile_image) }}" style="width: 60px;">
+									<?php $profileImagePath = "images/backend_images/member_profile/".$member->profileImage; ?>
+					                    @if(!empty($member->profileImage) && file_exists($profileImagePath))
+					                       <img src="{{ asset('images/backend_images/member_profile/'.$member->profileImage) }}" style="width: 60px;">
 					                    @else
-					                    <img src="{{ asset('images/services/no-image.png') }}" style="width: 60px;">
+					                      <img src="{{ asset('images/dummy-profile.jpg') }}" style="width: 60px;">
 					                    @endif
 					                </td>
-									<td>{{ $values['business_plan'] }}</td>
-									<td>{{ $values['email'] }}</td>
-									<td>{{ $values['sponser_id'] }}</td>
-									<td>{{ $values['status'] }}</td>
+									<td>{{ $member->business_plan }}</td>
+									<td>{{ $member->email }}</td>
+									<td>{{ $member->referalID }}</td>
+									<td>{{ $member->status }}</td>
 									<td>
-										<a href="{{ route('viewMemberDetails', $values['own_id']) }}" class="btn btn-success btn-sm"><i class="fas fa-eye" title="View Member Details" style="color: #fff;"></i></a>
-										<a href="javascript:void(0)" class="confirmDelete btn btn-danger btn-sm" record="user-user" recordid="{{ $values->id }}"><i class="fas fa-trash" title="Delete Admin User" style="color: #fff;"></i></a>
+										<a href="{{ route('viewMemberDetails',$member->id) }}" class="btn btn-success btn-sm"><i class="fas fa-eye" title="View Member Details" style="color: #fff;"></i></a>
+										<a href="javascript:void(0)" class="confirmDelete btn btn-danger btn-sm" record="user-user" recordid="{{ $member->id }}"><i class="fas fa-trash" title="Delete Admin User" style="color: #fff;"></i></a>
 									</td>									
 								</tr>
 								@endforeach							

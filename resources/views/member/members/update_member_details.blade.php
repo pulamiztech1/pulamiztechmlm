@@ -67,16 +67,17 @@
               <h1>Update your details</h1>
             </div>
           </div>
-          <form action="{{ route('updateMemberDetails') }}" method="post" enctype="multipart/form-data">@csrf
+          <form action="{{ route('updateMemberDetails') }}" method="post" enctype="multipart/form-data">
+            @csrf
             <div class="sparkline10-graph">
               <div class="input-knob-dial-wrap">
                 <div class="row">
                   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="chosen-select-single mg-b-20">
-                      <label>Name</label>
-                      <input type="text" name="name" id="name" class="form-control" value="{{ Auth::guard('agent')->user()->name }}" readonly="" />
+                      <label>Full Name</label>
+                      <input type="text" name="fullname" id="name" class="form-control" value="{{ Auth::guard('agent')->user()->name }}" />
                     </div>
-                    <div class="chosen-select-single mg-b-20">
+                    {{-- <div class="chosen-select-single mg-b-20">
                       <label>Email</label>
                       <input type="email" name="email" id="email" class="form-control" value="{{ Auth::guard('agent')->user()->email }}" readonly="" />
                     </div>
@@ -87,25 +88,20 @@
                     <div class="chosen-select-single mg-b-20">
                       <label>Parent ID</label>
                       <input type="text" name="parent_id" id="parent_id" class="form-control" value="{{ Auth::guard('agent')->user()->parent_id }}" readonly="" />
-                    </div>
-                    <div class="chosen-select-single mg-b-20">
+                    </div> --}}
+                    {{-- <div class="chosen-select-single mg-b-20">
                       <label>Sponser ID</label>
                       <input type="text" name="sponser_id" id="sponser_id" class="form-control" value="{{ Auth::guard('agent')->user()->sponser_id }}" readonly="" />
-                    </div>
-                    <div class="chosen-select-single mg-b-20">
+                    </div> --}}
+                    {{-- <div class="chosen-select-single mg-b-20">
                       <label>Own ID</label>
                       <input type="text" name="own_id" id="own_id" class="form-control" value="{{ Auth::guard('agent')->user()->own_id }}" readonly="" />
-                    </div>
-                    <div class="chosen-select-single mg-b-20">
-                      <label>Username</label>
-                      <input type="text" name="username" id="username" class="form-control" value="{{ Auth::guard('agent')->user()->username }}" />
-                    </div>
+                    </div> --}}
+                   
                     <div class="chosen-select-single mg-b-20">
                       <label>Mobile</label>
-                      <input type="text" name="mobile" id="mobile" class="form-control" value="{{ Auth::guard('agent')->user()->mobile }}" />
+                      <input type="text" name="phone_no" id="mobile" class="form-control" value="{{ Auth::guard('agent')->user()->mobile }}" />
                     </div>
-                  </div>
-                  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="form-group data-custom-pick" id="data_1">
                       <label>Date of Birth</label>
                       <div class="sparkline16-graph">
@@ -126,6 +122,9 @@
                         <option value="Other" @if(Auth::guard('agent')->user()->gender == "Other") selected @endif>Other</option>
                       </select>
                     </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                
                     <div class="chosen-select-single mg-b-20">
                       <label>State</label>
                       <input type="text" name="state" id="state" class="form-control" value="{{ Auth::guard('agent')->user()->state }}" />
@@ -137,6 +136,10 @@
                     <div class="chosen-select-single mg-b-20">
                       <label>Address</label>
                       <input type="text" name="address" id="address" class="form-control" value="{{ Auth::guard('agent')->user()->address }}" />
+                    </div> 
+                    <div class="chosen-select-single mg-b-20">
+                      <label>Zip Code</label>
+                      <input type="text" name="zipcode" id="address" class="form-control" value="{{ Auth::guard('agent')->user()->address }}" />
                     </div>
                     <div class="chosen-select-single mg-b-20">
                       <label>Profile Image</label>
@@ -148,10 +151,10 @@
                             <input type="hidden" name="current_user_profile" value="{{ Auth::guard('agent')->user()->profile_image }}">
                           @endif
                     </div>
-                    <div class="chosen-select-single mg-b-20">
+                    {{-- <div class="chosen-select-single mg-b-20">
                       <label>User URL</label>
                       <input type="text" name="user_url" id="user_url" class="form-control" value="{{ Auth::guard('agent')->user()->user_url }}" />
-                    </div>
+                    </div> --}}
                     <div class="login-horizental cancel-wp pull-left form-bc-ele">
                       <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Save Change</button>
                     </div>

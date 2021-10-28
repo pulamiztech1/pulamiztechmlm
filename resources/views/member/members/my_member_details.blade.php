@@ -55,18 +55,30 @@
       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="profile-info-inner">
           <div class="profile-img">
-            <img src="{{ asset('images/backend_images/profile/1.jpg') }}" alt="" />
+            @php
+                $profileImagePath = "images/backend_images/member_profile/".$memberDetails->profileImage;
+            @endphp
+            @if($memberDetails->profileImage && file_exists($profileImagePath))
+              <img src="{{ asset('images/backend_images/member_profile/'.$memberDetails->profileImage) }}" >
+            @else
+              <img src="{{ asset('images/dummy-profile.jpg') }}" alt="" />
+            @endif
           </div>
           <div class="profile-details-hr">
             <div class="row">
               <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
                 <div class="address-hr">
-                  <p><b>Name</b><br /> {{ $memberDetails->name }}</p>
+                  <p><b>Name</b><br /> {{ $memberDetails->fullname}}</p>
                 </div>
               </div>
-              <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
+              {{-- <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
                 <div class="address-hr tb-sm-res-d-n dps-tb-ntn">
                   <p><b>Designation</b><br /> Head of Dept.</p>
+                </div>
+              </div> --}}
+              <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
+                <div class="address-hr tb-sm-res-d-n dps-tb-ntn">
+                  <p><b>Phone</b><br /> {{$memberDetails->phone_no}}</p>
                 </div>
               </div>
             </div>
@@ -76,20 +88,16 @@
                   <p><b>Email ID</b><br /> {{ $memberDetails->email }}</p>
                 </div>
               </div>
-              <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
-                <div class="address-hr tb-sm-res-d-n dps-tb-ntn">
-                  <p><b>Phone</b><br /> +01962067309</p>
-                </div>
-              </div>
+              
             </div>
             <div class="row">
               <div class="col-lg-12">
                 <div class="address-hr">
-                  <p><b>Address</b><br /> E104, catn-2, Chandlodia Ahmedabad Gujarat, UK.</p>
+                  <p><b>Address</b><br /> {{$memberDetails->state}} ,{{$memberDetails->city}},{{$memberDetails->address}} ,{{$memberDetails->zipcode}}</p>
                 </div>
               </div>
             </div>
-            <div class="row">
+            {{-- <div class="row">
               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                 <div class="address-hr">
                   <a href="#"><i class="fa fa-facebook"></i></a>
@@ -108,7 +116,7 @@
                   <h3>600</h3>
                 </div>
               </div>
-            </div>
+            </div> --}}
           </div>
         </div>
       </div>
@@ -126,32 +134,32 @@
                     <div class="row">
                       <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                         <div class="address-hr biography">
-                          <p><b>Full Name</b><br /> Fly Zend</p>
+                          <p><b>Full Name</b><br /> {{$memberDetails->fullName}}</p>
                         </div>
                       </div>
                       <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                         <div class="address-hr biography">
-                          <p><b>Mobile</b><br /> 01962067309</p>
+                          <p><b>Mobile</b><br /> {{$memberDetails->phone_no}}</p>
                         </div>
                       </div>
                       <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                         <div class="address-hr biography">
-                          <p><b>Email</b><br /> fly@gmail.com</p>
+                          <p><b>Email</b><br />{{$memberDetails->email}}</p>
                         </div>
                       </div>
                       <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                         <div class="address-hr biography">
-                          <p><b>Location</b><br /> UK</p>
+                          <p><b>Location</b><br /> {{$memberDetails->state}} ,{{$memberDetails->city}},{{$memberDetails->address}} ,{{$memberDetails->zipcode}}</p>
                         </div>
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-lg-12">
+                      {{-- <div class="col-lg-12">
                         <div class="content-profile">
                           <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras
-                          dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
+                            dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
                         </div>
-                      </div>
+                      </div> --}}
                     </div>
                   </div>
                 </div>
@@ -160,30 +168,29 @@
             <div class="product-tab-list tab-pane fade" id="updateStatus">
               <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <form action="{{ route('updateMemberStatus', $memberDetails->id) }}" method="POST"> @csrf
-                  <div class="review-content-section">
-                    <div class="row">
-                      <div class="col-lg-6">
-                        <div class="form-group">
-                          <select class="form-control" name="status">
-                            <option value="">Select Status</option>
-                            <option value="New">New</option>
-                            <option value="Pending">Pending</option>
-                            <option value="Processing">Processing</option>
-                            <option value="Approved">Approved</option>
-                            <option value="Canceled">Canceled</option>
-                          </select>
+                  <form action="{{ route('updateMemberStatus', $memberDetails->id) }}" method="POST"> 
+                    @csrf
+                    <div class="review-content-section">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <select class="form-control" name="status">
+                              <option value="Pending">Pending</option>
+                              <option value="Processing">Processing</option>
+                              <option value="Approved">Approved</option>
+                              <option value="Canceled">Canceled</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="payment-adress mg-t-15">
+                            <button type="submit" class="btn btn-primary waves-effect waves-light mg-b-15">Submit</button>
+                          </div>
                         </div>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-lg-12">
-                        <div class="payment-adress mg-t-15">
-                          <button type="submit" class="btn btn-primary waves-effect waves-light mg-b-15">Submit</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                   </form>
                 </div>
               </div>

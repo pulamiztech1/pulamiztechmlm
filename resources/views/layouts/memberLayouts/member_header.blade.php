@@ -42,7 +42,7 @@
                         <a href="{{ route('updateMemberDetails') }}"><span class="edu-icon edu-user-rounded author-log-ic"></span>Update Details</a>
                       </li>
                       <li>
-                        <a href="{{ route('userSettings') }}"><span class="edu-icon edu-settings author-log-ic"></span>Change Password</a>
+                        <a href="{{ route('userUpdatePassword') }}"><span class="edu-icon edu-settings author-log-ic"></span>Change Password</a>
                       </li>
                       <li>
                         <a href="{{ route('memberLogout')}}"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
@@ -52,7 +52,7 @@
                   <li class="nav-item">
                     <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
                       <img src="{{ asset('images/backend_images/member_profile/'.Auth::guard('agent')->user()->profile_image) }}" alt="" />
-                      <span class="admin-name">0.00</span>
+                      <span class="admin-name">{{$myWallet}}</span>
                       {{-- //wallet amount --}}
                     </a>                    
                   </li>

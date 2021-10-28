@@ -3,9 +3,9 @@
 namespace App\Library;
 use Str;
 
-class ReferalCode
+class ReferalCodeGenerator
 {
-   public function generateReferalCode($user_id){
+   public static function generate($user_id){
         return $user_id."R".Str::random(4);
    }
 }

@@ -31,7 +31,9 @@ class User extends Authenticatable
         'zipcode',
         'address',
         'credit_card_id',
-        'status'
+        'status',
+        'date_of_birth',
+        'gender'
     ];
 
     /**
@@ -69,5 +71,17 @@ class User extends Authenticatable
     }
     public function orders(){
         return $this->hasMany(Order::class,'user_id');
+    }
+    public function left_matrix(){
+        return $this->hasOne(User::class,'left_child','id');
+    } 
+    public function middle_matrix(){
+        return $this->hasOne(User::class,'middle_child','id');
+    }
+     public function right_matrix(){
+        return $this->hasOne(User::class,'right_child','id');
+    }
+    public function ePin(){
+        return $this->hasOne(EPin::class,'user_id','id');
     }
 }
