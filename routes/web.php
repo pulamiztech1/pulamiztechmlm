@@ -4,13 +4,9 @@ use Illuminate\Support\Facades\Route;
 
 use App\Models\User;
 use App\Http\Controllers\Admin\AdminController;
-<<<<<<< HEAD
-use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\WebContentController;
-=======
->>>>>>> 63fedaa8996f5060fb5fefff2f5fdb10258bde96
 
 //Front Controllers
 use App\Http\Controllers\Front\IndexController;
@@ -56,7 +52,7 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){
 		Route::get('/view-products',[ProductController::class, 'viewProducts'])->name('viewProducts');
 		Route::get('delete-product/{id}',[ProductController::class,'deleteProduct'])->name('deleteProduct');
 		Route::get('delete-product-image/{id}',[ProductController::class, 'deleteProductImage'])->name('deleteProductImage');
-		Route::get('/view-product-details/{id}',[ProductController::class,'productDetails'])->name('productDetails');
+		Route::get('/view-product-details/{id}',[ProductController::class,'productDetails'])->name('viewProductDetails');
 
 		// Admin Web Contents Routes		
 		Route::post('/update-web-content-status',[WebContentController::class, 'updateWebContentStatus']);
