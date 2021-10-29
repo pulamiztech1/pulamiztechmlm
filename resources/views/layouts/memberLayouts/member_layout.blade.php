@@ -7,7 +7,8 @@
     <title>Nepal Direct Marketing | Connect and Earn</title>
     <meta name="description" content="">
     <meta name="csrf-token" content="{!! csrf_token() !!}">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- favicon
         ============================================ -->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">

@@ -52,40 +52,23 @@
 						<table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
 							data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
 							<thead>
-								<tr>
-									<th data-field="id">ID</th>
-									<th data-field="name">Username</th>
-									<th data-field="profile_image">Profile<br>Image</th>
-									<th data-field="business_plan">Business<br>Plan</th>
-									<th data-field="email">Email</th>
-									<th data-field="sponserID">Sponser ID</th>
-									<th data-field="status">Status</th>
-									<th data-field="action">Action</th>
-								</tr>
+									<tr>
+										<th data-field="id">SN</th>
+										<th data-field="name">Debit/Credit</th>
+										<th data-field="business_plan">Amount</th>
+										<th data-field="email">Description</th>
+										<th data-field="sponserID">Date</th>
+									</tr>
 							</thead>
 							<tbody>
-								@foreach($myUsers as $user => $values)
 								<tr>
-									<td>{{ $values['id'] }}</td>
-									<td>{{ $values['name'] }}</td>
-									<td>
-									<?php $profileImagePath = "images/backend_images/member_profile/".$values->profile_image; ?>
-					                    @if(!empty($values->profile_image) && file_exists($profileImagePath))
-					                    <img src="{{ asset('images/backend_images/member_profile/'.$values->profile_image) }}" style="width: 60px;">
-					                    @else
-					                    <img src="{{ asset('images/services/no-image.png') }}" style="width: 60px;">
-					                    @endif
-					                </td>
-									<td>{{ $values['business_plan'] }}</td>
-									<td>{{ $values['email'] }}</td>
-									<td>{{ $values['sponser_id'] }}</td>
-									<td>{{ $values['status'] }}</td>
-									<td>
-										<a href="{{ route('viewMemberDetails', $values['own_id']) }}" class="btn btn-success btn-sm"><i class="fas fa-eye" title="View Member Details" style="color: #fff;"></i></a>
-										<a href="javascript:void(0)" class="confirmDelete btn btn-danger btn-sm" record="user-user" recordid="{{ $values->id }}"><i class="fas fa-trash" title="Delete Admin User" style="color: #fff;"></i></a>
-									</td>									
+									<td>1</td>
+									<td> <div class="bg-danger rounded text-white text-center">debit</div></td>
+									<td>RS 132132</td>
+									<td>sdfdf</td>
+									<td>2 min ago</td>
+																		
 								</tr>
-								@endforeach							
 							</tbody>
 						</table>
 					</div>
