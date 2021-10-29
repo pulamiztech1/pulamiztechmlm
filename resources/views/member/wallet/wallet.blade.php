@@ -20,7 +20,7 @@
 									<span class="bread-slash">/</span>
 								</li>
 								<li>
-									<span class="bread-blod">View Members</span>
+									<span class="bread-blod">myWallet</span>
 								</li>
 							</ul>
 						</div>
@@ -37,7 +37,7 @@
 			<div class="sparkline13-list">
 				<div class="sparkline13-hd">
 					<div class="main-sparkline13-hd">
-						<h1>Projects <span class="table-project-n">Data</span> Table</h1>
+						<h1>Transaction <span class="table-project-n">History</span> </h1>
 					</div>
 				</div>
 				<div class="sparkline13-graph">
@@ -61,14 +61,23 @@
 									</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>1</td>
-									<td> <div class="bg-danger rounded text-white text-center">debit</div></td>
-									<td>RS 132132</td>
-									<td>sdfdf</td>
-									<td>2 min ago</td>
-																		
-								</tr>
+								@foreach ($user->transaction_histories as $transaction)
+									
+									<tr>
+										<td>{{$loop->index+1}}</td>
+										<td>
+											@if ($transaction->debit_credit=='debit')
+												<div class="bg-danger rounded text-white text-center">debit</div>
+											@else
+											    <div class="bg-success rounded text-white text-center">credit</div>
+											@endif
+										</td>
+										<td>Rs. {{$transaction->balance}}</td>
+										<td>{{$transaction->description}}</td>
+										<td>{{$transaction->created_at}}<br/>{{$transaction->created_at->diffForHumans()}}</td>
+																			
+									</tr>
+								@endforeach
 							</tbody>
 						</table>
 					</div>

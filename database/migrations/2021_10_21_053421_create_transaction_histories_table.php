@@ -16,8 +16,7 @@ class CreateTransactionHistoriesTable extends Migration
         Schema::create('transaction_histories', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->float('debit')->nullable();
-            $table->float('credit')->nullable();
+            $table->enum('debit_credit',['debit','credit']);
             $table->float('balance');
             $table->text('description');
             $table->timestamps();

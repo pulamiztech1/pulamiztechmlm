@@ -230,11 +230,12 @@ class UsersController extends Controller
     }
     public function myWallet(){
         $user=User::with('wallet','transaction_histories')->findOrFail(Auth::guard('agent')->id());
-        return view('member.wallet.wallet');
+        return view('member.wallet.wallet',compact('user'));
     }
     public function TransactionHistory(){
         $user=User::with('transaction_histories')->findOrFail(Auth::guard('agent')->id());
-        return $user;
+        return view('member.wallet.transaction_history',compact('user'));
+
     }
     public function RequestNewPins(Request $request){
         if($request->isMethod('post')){
