@@ -31,7 +31,15 @@
 	</div>
 </div>
 <div class="data-table-area mg-b-15">
+
 <div class="container-fluid">
+	<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+		<div class="card-header"><h1>My Wallet</h1></div>
+		<div class="card-body">
+		  <h5 class="card-title">Balance</h5>
+		  <h3 class="card-title">Rs. {{$user->wallet->amount}} </h3>
+		</div>
+	  </div>
 	<div class="row">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<div class="sparkline13-list">
