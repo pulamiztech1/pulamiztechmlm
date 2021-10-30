@@ -20,7 +20,7 @@
 									<span class="bread-slash">/</span>
 								</li>
 								<li>
-									<span class="bread-blod">View Members</span>
+									<span class="bread-blod">Transaction History</span>
 								</li>
 							</ul>
 						</div>
