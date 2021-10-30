@@ -20,8 +20,9 @@ class CreateProductsTable extends Migration
             $table->float('product_cost');
             $table->float('product_price');
             $table->string('product_description');
-            $table->float('product_image');
-            $table->tinyInteger('product_status');
+            $table->string('product_image');
+            $table->string('slug');
+            $table->tinyInteger('status');
             $table->timestamps();
         });
     }

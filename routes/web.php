@@ -4,13 +4,11 @@ use Illuminate\Support\Facades\Route;
 
 use App\Models\User;
 use App\Http\Controllers\Admin\AdminController;
-<<<<<<< HEAD
+
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\WebContentController;
-=======
->>>>>>> 63fedaa8996f5060fb5fefff2f5fdb10258bde96
 
 //Front Controllers
 use App\Http\Controllers\Front\IndexController;

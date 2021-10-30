@@ -121,7 +121,7 @@
                           </div>
                           <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                             <div class="tinymce-single responsive-mg-b-30">
-                                <textarea id="summernote1" name="product_description">@if(!empty($productdata['product_description'])) {{ $productdata['product_description'] }} @else {{ old('product_description') }}" @endif</textarea> 
+                                <textarea id="summernote1" name="product_description">@if(!empty($productdata['product_description'])) {{ $productdata['product_description'] }} @else {{ old('product_description') }} @endif</textarea> 
                             </div>
                           </div>
                         </div>

@@ -12,6 +12,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
     <!-- Google Fonts============================================ -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url('plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Bootstrap CSS============================================ -->
     <link rel="stylesheet" href="{{ url('css/backend_css/bootstrap.min.css') }}">
     <!-- Bootstrap CSS ============================================ -->
