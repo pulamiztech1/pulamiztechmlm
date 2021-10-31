@@ -73,7 +73,7 @@
             <p class="mt5 mb20">Already a member? <a href="{{route('memberLogin')}}"><strong>Sign In</strong></a></p>
             <input type="hidden" name="parent_id" id="parent_id">
             <input type="hidden" name="sponser_id" id="sponser_id">
-            <div class="mb-10">
+            <div class="mb10">
             <label class="control-label">Name</label>
                 <input type="text" name="name" id="name" class="form-control" placeholder="Your name" />
             </div>

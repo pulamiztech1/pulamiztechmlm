@@ -2,10 +2,49 @@
 	<div class="top-bar">
 		<div class="container">
 			<div class="tb-contact pull-left">
-				<i class="fa fa-envelope color"></i> &nbsp; <a href="mailto:contact@magicmarket.com">contact@magicmarket.com</a>
+				<i class="fa fa-envelope color"></i> &nbsp; <a href="mailto:contact@matrixmlm.com">contact@matrixmlm.com</a>
 				&nbsp;&nbsp;
-				<i class="fa fa-phone color"></i> &nbsp; +977-9841782665
+				<i class="fa fa-phone color"></i> &nbsp; +977-98----------				
 			</div>
+			<!-- Shopping kart starts -->
+			<div class="tb-shopping-cart pull-right">
+				<!-- Link with badge -->
+				<a href="#" class="btn btn-white btn-xs b-dropdown"><i class="fa fa-shopping-cart"></i> <i class="fa fa-angle-down color"></i> <span class="badge badge-color">{{ totalCartItems() }}</span></a>
+				<!-- Dropdown content with item details -->
+				<div class="b-dropdown-block">
+					<!-- Heading -->
+					<h4><i class="fa fa-shopping-cart color"></i> Your Items</h4>
+					<ul class="list-unstyled">
+						<!-- Item 1 -->
+						<li>
+							<!-- Item image -->
+							<div class="cart-img">
+								<a href="#"><img src="img/ecommerce/view-cart/1.png" alt="" class="img-responsive" /></a>
+							</div>
+							<!-- Item heading and price -->
+							<div class="cart-title">
+								<h5><a href="#">Premium Quality Shirt</a></h5>
+								<!-- Item price -->
+								<span class="label label-color label-sm">$1,90</span>
+							</div>
+							<div class="clearfix"></div>
+						</li>
+						<!-- Item 2 -->
+						<li>
+							<div class="cart-img">
+								<a href="#"><img src="img/ecommerce/view-cart/2.png" alt="" class="img-responsive" /></a>
+							</div>
+							<div class="cart-title">
+								<h5><a href="#">Premium Quality Shirt</a></h5>
+								<span class="label label-color label-sm">$1,20</span>
+							</div>
+							<div class="clearfix"></div>
+						</li>
+					</ul>
+					<a href="{{ route('cart') }}" class="btn btn-white btn-sm">View Cart</a> &nbsp; <a href="#" class="btn btn-color btn-sm">Checkout</a>
+				</div>
+			</div>
+			<!-- Shopping kart ends -->
 			<div class="tb-shopping-cart pull-right">
 				<a href="{{ route('memberLogin') }}"><i class="fas fa-sign-in-alt"></i> <span class="btn btn-success btn-sm">Login</span></a>
 				<a href="{{ route('memberRegister') }}"><i class="fas fa-sign-in-alt"></i> <span class="btn btn-info btn-sm">Register</span></a>
@@ -29,13 +68,6 @@
 							</span>
 						</div>
 					</form>
-				</div>
-			</div>
-			<div class="tb-social pull-right">
-				<div class="brand-bg text-right">
-					<a href="#" class="facebook"><i class="fa fa-facebook square-2 rounded-1"></i></a>
-					<a href="#" class="twitter"><i class="fa fa-twitter square-2 rounded-1"></i></a>
-					<a href="#" class="google-plus"><i class="fa fa-google-plus square-2 rounded-1"></i></a>
 				</div>
 			</div>
 			<div class="clearfix"></div>
@@ -70,10 +102,9 @@
 						<li><a href="{{ route('index') }}">Home</a></li>
 						<li><a href="{{ route('productsListing') }}">Shop</a></li>					
 						<li><a href="{{ route('productsListing') }}">About Us</a></li>					
-						<li><a href="#">Gallery</a></li>					
+						<li><a href="#">Galleries</a></li>					
 						<li><a href="#">News</a></li>
 						<li><a href="contact.html">Contact Us</a></li>
-						<li><a href="{{ route('cart') }}">Cart</a></li>
 					</ul>
 				</div>
 			</div>

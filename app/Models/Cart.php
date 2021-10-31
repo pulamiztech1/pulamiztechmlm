@@ -11,7 +11,7 @@ use Auth;
 class Cart extends Model
 {
     use HasFactory;
-    
+
     public static function userCartItems(){
     	if(Auth::check()){
     		$userCartItems = Cart::with(['product'=>function($query){
