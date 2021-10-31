@@ -49,7 +49,11 @@
     <div class="tf-tree tf-custom">
         <ul>
           <li>
-            <span class="tf-nc">{{Auth::guard('agent')->user()->username}}</span>
+			  @if($left_child==null && $right_child==null && $middle_child==null)
+			    <h1>You have not downlines yet</h1>
+			  @else
+			    <span class="tf-nc">{{Auth::guard('agent')->user()->username}}</span>
+			  @endif
             <ul>
                 @if($left_child!=null)
                     <li>

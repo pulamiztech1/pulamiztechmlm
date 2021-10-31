@@ -225,8 +225,6 @@ class UsersController extends Controller
         ]);
         Session::flash('success_message','Status Successfully Updated!!');
         return redirect()->back();
-
-
     }
     public function myWallet(){
         $user=User::with('wallet','transaction_histories')->findOrFail(Auth::guard('agent')->id());
@@ -234,7 +232,6 @@ class UsersController extends Controller
     }
     public function TransactionHistory(){
         $user=User::with('transaction_histories')->findOrFail(Auth::guard('agent')->id());
-        
         return view('member.wallet.transaction_history',compact('user'));
 
     }
